@@ -1,5 +1,5 @@
-BROKER_PORT = "localhost"
-BROKER_HOST = 1883
+BROKER_HOST = "localhost"
+BROKER_PORT = 1883
 
 SESSION = "session1"
 TOPIC = f"mqtt_game/{SESSION}"

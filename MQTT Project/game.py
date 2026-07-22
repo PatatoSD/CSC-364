@@ -40,7 +40,7 @@ def main():
     screen = pygame.display.set_mode((GRID_WIDTH * CELL_SIZE, GRID_HEIGHT * CELL_SIZE))
     pygame.display.set_caption(f"Project 3 Grid Game - {name}")
     clock = pygame.time.Clock()
-    font = pygame.font.Sysfont(None, 18)
+    font = pygame.font.SysFont(None, 18)
 
     running = True
     try:
@@ -50,7 +50,7 @@ def main():
                 if event.type == pygame.QUIT:
                     running = False
                 elif event.type == pygame.KEYDOWN:
-                    dx, dy = 0
+                    dx = dy = 0
                     if event.key in (pygame.K_LEFT, pygame.K_a):
                         dx = -1
                     elif event.key in (pygame.K_RIGHT, pygame.K_d):
@@ -73,16 +73,16 @@ def main():
             pygame.display.flip()
             clock.tick(30)
     finally:
-        mqtt_con.disonnect()
+        mqtt_con.disconnect()
         pygame.quit()
 
 def _draw_grid(screen):
     for gx in range(GRID_WIDTH + 1):
         x = gx * CELL_SIZE
-        pygame.drawline(screen, gridColor, (x, 0), (x, GRID_HEIGHT, * CELL_SIZE))
+        pygame.draw.line(screen, gridColor, (x, 0), (x, GRID_HEIGHT * CELL_SIZE))
     for gy in range(GRID_HEIGHT + 1):
         y = gy * CELL_SIZE
-        pygame.drawline(screen, gridColor, (0, y), (GRID_WIDTH * CELL_SIZE, y))
+        pygame.draw.line(screen, gridColor, (0, y), (GRID_WIDTH * CELL_SIZE, y))
 
 def _draw_players(screen, players, font):
     for p in players.values():
@@ -93,7 +93,7 @@ def _draw_token(screen, x, y, color, label, font):
     cy = y * CELL_SIZE + CELL_SIZE // 2
     pygame.draw.circle(screen, color, (cx, cy), CELL_SIZE // 2 - 4)
     text = font.render(label, True, TextColor)
-    screen.blit(text, (cx - text.get_width() // 2, cy * CELL_SIZE - 14))
+    screen.blit(text, (cx - text.get_width() // 2, cy - 14))
 
 if __name__ == "__main__":
     main()

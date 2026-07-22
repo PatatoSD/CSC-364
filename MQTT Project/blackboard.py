@@ -4,7 +4,7 @@ import threading
 class Blackboard:
     def __init__(self, stale_after=15.0):
         self._lock = threading.Lock()
-        self._players = []
+        self._players = {}
         self._stale_after = stale_after
 
     def update_player(self, player_id, x, y, color, name):
