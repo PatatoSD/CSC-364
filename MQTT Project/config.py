@@ -2,7 +2,7 @@ BROKER_PORT = "localhost"
 BROKER_HOST = 1883
 
 SESSION = "session1"
-TOPIC_PREFIX = f"mqtt_game/{SESSION}"
+TOPIC = f"mqtt_game/{SESSION}"
 
 GRID_WIDTH = 20
 GRID_HEIGHT = 15
